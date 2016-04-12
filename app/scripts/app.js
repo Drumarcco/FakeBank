@@ -12,7 +12,8 @@ angular
   .module('fakeBankApp', [
     'ngAnimate',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ngMaterial'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -29,4 +30,12 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .config(function($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+      .primaryPalette('teal')
+      .accentPalette('green');
+
+    $mdThemingProvider.theme('docs-teal', 'default')
+      .primaryPalette('light-green');
   });
