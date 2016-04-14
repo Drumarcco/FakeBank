@@ -52,6 +52,10 @@ md-icon.fa {
   font-size: 24px;
 }
 
+.bold {
+  font-weight: normal;
+}
+
 /* SECTIONS */
 section {
   min-height: 400px;

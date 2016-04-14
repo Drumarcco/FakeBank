@@ -1,0 +1,70 @@
+<md-content flex="grow" class="bg-dashboard" layout="column" layout-align="start center" layout-padding>
+  <div layout="row" layout-align="center center" layout-margin>
+    <i class="fa fa-3x fa-file-text-o"></i>
+    <h1 class="text-center">Contrato</h1>
+  </div>
+  <div layout layout-align="center" flex>
+    <div flex>
+      <md-card>
+        <md-toolbar>
+          <md-toolbar-tools>
+            <h3 class="text-center">Cliente</h3>
+          </md-toolbar-tools>
+        </md-toolbar>
+        <md-card-content>
+          <div layout layout-align="center center">
+            <div layout="column" layout-align="center center">
+              <h5 class="m-b-0">Tipo de Cliente:</h5>
+              <h4>Persona Física</h4>
+            </div>
+          </div>
+          <hr>
+          <div layout layout-margin>
+            <h4 class="bold">Nombre:</h4>
+            <h4>Marco Antonio Alvarado Mazon</h4>
+          </div>
+          <div layout layout-margin>
+            <h4 class="bold">Teléfono:</h4>
+            <h4>(662) 183 5479</h4>
+          </div>
+          <div layout layout-margin layout-wrap>
+            <h4 class="bold">Correo Electrónico:</h4>
+            <h4>marcoantonioam9@gmail.com</h4>
+          </div>
+        </md-card-content>
+      </md-card>
+      <hr>
+      <h3 class="text-center">Continuar Registro:</h3>
+      <md-card>
+        <md-card-content layout="column">
+          <md-input-container>
+            <label>RFC</label>
+            <input type="text">
+          </md-input-container>
+          <md-input-container>
+            <label>Dirección</label>
+            <input>
+          </md-input-container>
+          <md-input-container>
+            <label>País</label>
+            <md-select ng-model="country">
+              <md-option>México</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container>
+            <label>Estado</label>
+            <md-select ng-model="state">
+              <md-option>Sonora</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container>
+            <label>Ciudad</label>
+            <md-select ng-model="city">
+              <md-option>Hermosillo</md-option>
+            </md-select>
+          </md-input-container>
+        </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</md-content>
