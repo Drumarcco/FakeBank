@@ -4,7 +4,7 @@
       <h1 class="text-center md-display-2">Fake Bank</h1>
       <hr>
       <h2 class="text-center" layout-margin>Somos un banco ficticio de confianza,
-        dispuestos a ofrecete la mejor opción.</h2>
+        dispuestos a ofrecerte la mejor opción.</h2>
       <a ng-click="goToPlans()">
         <i class="fa fa-2x fa-chevron-down"></i>
       </a>
@@ -15,10 +15,12 @@
       <h1 class="text-center">
         Tenemos dos opciones para ti
       </h1>
-      <div layout layout-xs="column" layout-align="center" layout-align-xs="center center">
-        <md-card flex="40" flex-xs="50" ng-repeat="plan in plans">
+      <div layout layout-xs="column" layout-sm="column"
+      layout-align="center" layout-align-xs="center center"
+      layout-align-sm="center center">
+        <md-card flex="40" flex-xs="50" flex-sm="50" ng-repeat="plan in plans">
           <img src="{{plan.imgSrc}}" class="md-card-image">
-          <md-card-title>
+          <md-card-title layout-align="center">
             <span class="md-headline">{{plan.title}}</span>
           </md-card-title>
           <md-card-content>
@@ -34,7 +36,7 @@
   <section id="signup" class="bg-signup" layout="column">
     <div class="bg-shadow-teal" flex layout="column" layout-align="center center">
       <h1 class="text-center">Seamos socios</h1>
-      <h3>Pre-registrate con nosotros para contratar nuestros servicios.</h3>
+      <h3 class="text-center">Pre-registrate con nosotros para contratar nuestros servicios.</h3>
       <div layout layout-align="center" class="fill-width">
         <md-card flex="70" layout-padding layout-align="center">
           <md-card-content flex>

@@ -1,3 +1,14 @@
+/*
+====== CONTENTS =======
+ -- GENERAL -----------
+ -- BOOTSTRAP ---------
+ -- SECTIONS ----------
+ -- BACKGROUND --------
+ -- LAYOUT ------------
+ ======================
+ */
+
+/* GENERAL*/
 * {
   font-family: Roboto;
 }
@@ -22,8 +33,18 @@ a:hover {
   color: lightgray;
 }
 
+p {
+  font-size: 1.6rem;
+}
+
+/* BOOTSTRAP */
+.jumbotron {
+  padding: 0;
+  margin-bottom: 0;
+}
+
 .jumbotron > hr {
-  width: 30%;
+  width: 20%;
   border-top-color: #009688;
 }
 
@@ -31,6 +52,7 @@ md-icon.fa {
   font-size: 24px;
 }
 
+/* SECTIONS */
 section {
   min-height: 400px;
 }
@@ -48,6 +70,15 @@ section > div {
   font-size: 72px;
 }
 
+#login {
+  color: white;
+  height: calc(100vh - 58px);
+}
+
+#login h1 {
+  font-size: 48px;
+}
+
 #plan {
   background-color: #f2f2f2;
 }
@@ -57,6 +88,7 @@ section > div {
   color: white;
 }
 
+/* BACKGROUND */
 .bg-bank {
   background-image: url("../images/bank.jpg");
   background-size: cover;
@@ -75,11 +107,15 @@ section > div {
   background-size: cover;
 }
 
-.jumbotron {
-  padding: 0;
-  margin-bottom: 0;
+.bg-dashboard {
+  background-color: #f4f4f4;
 }
 
+/* LAYOUT */
 .fill-width {
   width: 100%;
+}
+
+.m-b-0 {
+  margin-bottom: 0;
 }
