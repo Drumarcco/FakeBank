@@ -8,10 +8,17 @@
  * Controller of the fakeBankApp
  */
 angular.module('fakeBankApp')
-  .controller('TransactionCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('TransactionCtrl', function ($scope, $mdDialog) {
+    $scope.showModal = showModal;
+
+    function showModal() {
+      var confirm = $mdDialog.confirm({
+        title: 'Transacción exitosa',
+        textContent: 'Descargue su comprobante con el siguiente botón.',
+        ok: 'Guardar Archivo',
+        cancel: 'Cancelar'
+      });
+
+      $mdDialog.show(confirm);
+    }
   });

@@ -45,6 +45,7 @@ p {
 
 .jumbotron > hr {
   width: 20%;
+  border-top-width: thick;
   border-top-color: #009688;
 }
 
@@ -54,6 +55,22 @@ md-icon.fa {
 
 .bold {
   font-weight: normal;
+}
+
+.step {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #009688;
+}
+
+.step > h2 {
+  color: white;
+  margin: 0;
+  position: relative;
+  top: 10px;
+  font-size: 30px;
+  text-align: center;
 }
 
 /* SECTIONS */

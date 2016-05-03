@@ -43,6 +43,10 @@ angular
         templateUrl: 'views/contract.html',
         controller: 'ContractCtrl'
       })
+      .when('/api', {
+        templateUrl: 'views/api.html',
+        controller: 'ApiCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
