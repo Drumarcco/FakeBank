@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: DashboardCtrl', function () {
+describe('Controller: ApiCtrl', function () {
 
   // load the controller's module
   beforeEach(module('fakeBankApp'));
 
-  var DashboardCtrl,
+  var ApiCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    DashboardCtrl = $controller('DashboardCtrl', {
+    ApiCtrl = $controller('ApiCtrl', {
       $scope: scope
       // place here mocked dependencies
     });

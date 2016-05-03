@@ -16,8 +16,4 @@ describe('Controller: ContractCtrl', function () {
       // place here mocked dependencies
     });
   }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(ContractCtrl.awesomeThings.length).toBe(3);
-  });
 });
