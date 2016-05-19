@@ -13,43 +13,115 @@ angular
     'ngAnimate',
     'ngResource',
     'ngRoute',
-    'ngMaterial'
+    'ngMaterial',
+    'ngCookies'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, ACCESS_LEVELS) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        access_level: ACCESS_LEVELS.pub
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        access_level: ACCESS_LEVELS.pub
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
-        controllerAs: 'about'
+        controllerAs: 'about',
+        access_level: ACCESS_LEVELS.pub
       })
       .when('/dashboard', {
         templateUrl: 'views/dashboard.html',
-        controller: 'DashboardCtrl'
+        controller: 'DashboardCtrl',
+        access_level: ACCESS_LEVELS.user
       })
       .when('/transaction', {
         templateUrl: 'views/transaction.html',
-        controller: 'TransactionCtrl'
+        controller: 'TransactionCtrl',
+        access_level: ACCESS_LEVELS.user
       })
       .when('/contract', {
         templateUrl: 'views/contract.html',
-        controller: 'ContractCtrl'
+        controller: 'ContractCtrl',
+        access_level: ACCESS_LEVELS.user
       })
       .when('/api', {
         templateUrl: 'views/api.html',
-        controller: 'ApiCtrl'
+        controller: 'ApiCtrl',
+        access_level: ACCESS_LEVELS.user
       })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .config(function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+    var interceptor =
+    function($q, $rootScope, Auth) {
+      return {
+        'response': function(resp) {
+          if (resp.config.url === '/api/login') {
+            Auth.setToken(resp.data.token);
+          }
+          return resp;
+        },
+        'responseError': function(rejection) {
+          // Handle Errors
+          switch(rejection.status) {
+            case 401:
+              if (rejection.config.url !== 'api/login') {
+                $rootScope.$broadcast('auth:loginRequired');
+              }
+              break;
+
+            case 403:
+              $rootScope.$broadcast('auth:forbidden');
+              break;
+
+            case 404:
+              $rootScope.$broadcast('page:notFound');
+              break;
+
+            case 500:
+              $rootScope.$broadcast('server:error');
+              break;
+          }
+
+          return $q.reject(rejection);
+        },
+        'request': function(req) {
+          req.headers = req.headers || {};
+          if (!req.headers.Authorization) {
+            req.headers.Authorization = Auth.getToken();
+          }
+          return req;
+        },
+        'requestError': function(reqErr) {
+          return reqErr;
+        }
+      };
+    };
+
+    $httpProvider.interceptors.push(interceptor);
+  })
+  .run(function($rootScope, $location, Auth) {
+    $rootScope.$on('$routeChangeStart',
+    function(evt, next) {
+      if (!Auth.isAuthorized(next.$$route.access_level)) {
+        if (Auth.isLoggedIn()) {
+          $location.path('/dashboard');
+        } else {
+          $location.path('/login');
+        }
+      }
+    });
   })
   .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
@@ -58,4 +130,5 @@ angular
 
     $mdThemingProvider.theme('docs-teal', 'default')
       .primaryPalette('light-green');
-  });
+  })
+  .value('basePath', 'http://localhost:51016/');
