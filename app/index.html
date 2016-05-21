@@ -39,7 +39,8 @@
             <md-icon md-font-icon="fa fa-bars"></md-icon>
           </md-button>
           <span flex></span>
-          <md-button href="/#/login">Ingresar</md-button>
+          <md-button href="/#/login" ng-if="!isLoggedIn()">Ingresar</md-button>
+          <md-button ng-if="isLoggedIn()" ng-click="logout()">Salir</md-button>
         </div>
       </md-toolbar>
       <div ng-view="" layout="column" flex></div>

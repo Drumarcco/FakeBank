@@ -7,20 +7,22 @@
       <hr>
       <div class="fill-width" layout="row" layout-align="center">
         <md-card flex="40" flex-sm="60" flex-xs="80" layout-padding>
-          <md-card-content layout="column">
-            <md-input-container>
-              <label>Usuario</label>
-              <input ng-model="user.username">
-            </md-input-container>
-            <md-input-container>
-              <label>Contraseña</label>
-              <input type="password" ng-model="user.password">
-            </md-input-container>
-          </md-card-content>
-          <md-card-actions layout="row" layout-align="end">
-            <md-button href='/#/dashboard' class="md-primary md-raised"
-            ng-click="login()">Ingresar</md-button>
-          </md-card-actions>
+          <form novalidate>
+            <md-card-content layout="column">
+              <md-input-container>
+                <label>Usuario</label>
+                <input ng-model="user.username">
+              </md-input-container>
+              <md-input-container>
+                <label>Contraseña</label>
+                <input type="password" ng-model="user.password">
+              </md-input-container>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end">
+              <md-button href='/#/dashboard' class="md-primary md-raised"
+              ng-click="login()">Ingresar</md-button>
+            </md-card-actions>
+          </form>
         </md-card>
       </div>
     </div>

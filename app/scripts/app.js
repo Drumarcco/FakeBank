@@ -114,6 +114,11 @@ angular
   .run(function($rootScope, $location, Auth) {
     $rootScope.$on('$routeChangeStart',
     function(evt, next) {
+      var nextPath = next.$$route.originalPath;
+      if ((nextPath === '/login' || nextPath === '/') && Auth.isLoggedIn()) {
+        $location.path('/dashboard');
+      }
+
       if (!Auth.isAuthorized(next.$$route.access_level)) {
         if (Auth.isLoggedIn()) {
           $location.path('/dashboard');

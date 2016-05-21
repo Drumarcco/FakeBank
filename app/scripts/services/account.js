@@ -2,7 +2,7 @@
   'use strict';
   angular.module('fakeBankApp').factory('Account', Account);
 
-  function Account($http, Auth, basePath) {
+  function Account($http, Auth, basePath, $location) {
     return {
       login: login
     };
@@ -15,12 +15,13 @@
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       })
-        .then(function(response) {
-          var data = response.data;
-          Auth.setUser({
-            token: 'Bearer ' + data.access_token,
-          });
+      .then(function(response) {
+        var data = response.data;
+        Auth.setUser({
+          token: 'Bearer ' + data.access_token,
         });
+        $location.path('/dashboard');
+      });
     }
   }
 })();
