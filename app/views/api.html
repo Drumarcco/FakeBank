@@ -1,4 +1,4 @@
-<md-content class="bg-dashboard" layout="column">
+<md-content flex="grow" class="bg-dashboard" layout="column">
   <div layout-align="center center" layout-margin class="text-center">
     <h1 class="text-center">Implementa Nuestra API</h1>
     <i class="fa fa-3x fa-code"></i>
@@ -16,36 +16,56 @@
       <md-card>
         <md-toolbar>
           <md-toolbar-tools>
-            <h3 class="text-center">Token Único</h3>
+            <h3 class="text-center">Elije una cuenta</h3>
           </md-toolbar-tools>
         </md-toolbar>
         <md-card-content layout="column" layout-align="center center">
-          <h3>lSaj!2B89*4845fjJz12?</h3>
-          <h4>Este es tu tóken único, por medio de él podemos identificar
-          que tu negocio está intentando utilizar nuestra Web API, y se adjunta
-          a cada una de las solicitudes HTTP a nuestro sistema.</h4>
+          <md-input-container>
+            <label>Cuenta</label>
+            <md-select ng-model="AccountId" ng-change="getToken()">
+              <md-option ng-repeat="account in accounts" value="{{account.Id}}">
+                {{account.CardNumber | creditCard }}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <div ng-if="Token" class="text-center">
+            <h3 class="text-center">{{Token}}</h3>
+            <h4>Este es tu tóken único, por medio de él podemos identificar
+            que tu negocio está intentando utilizar nuestra Web API, y se adjunta
+            a cada una de las solicitudes HTTP a nuestro sistema.</h4>
+          </div>
         </md-card-content>
       </md-card>
-      <div layout layout-align="center center">
-        <div class="step">
-          <h2>2</h2>
+      <div ng-if="Token">
+        <div layout layout-align="center center">
+          <div class="step">
+            <h2>2</h2>
+          </div>
         </div>
+        <md-card>
+          <md-toolbar>
+            <md-toolbar-tools>
+              <h3 class="text-center">Web API</h3>
+            </md-toolbar-tools>
+          </md-toolbar>
+          <md-card-content layout="column" layout-align="center center">
+            <h3>Realizar una transacción</h3>
+            <h4 class="text-center">
+              Nuestro servidor utiliza JSON para comunicar datos, la estructura
+              que requerimos para realizar una transacción es la siguiente:
+            </h4>
+            <img ng-src="images/transaction_json.jpg">
+            <h4 class="text-center">
+              Envia un JSON a través de una petición HTTP POST con el formato
+              anterior a la dirección <br>
+              {{basePath}}api/Transaction <br>
+              y si se logra completar la transacción, el servidor te responderá
+              con HTTP status Code 200, de lo contrario, te responderá con HTTP
+              Status Code 400 (Bad Request).
+            </h4>
+          </md-card-content>
+        </md-card>
       </div>
-      <md-card>
-        <md-toolbar>
-          <md-toolbar-tools>
-            <h3 class="text-center">Web API</h3>
-          </md-toolbar-tools>
-        </md-toolbar>
-        <md-card-content layout="column" layout-align="center center">
-          <h3>Realizar una transacción</h3>
-          <h4>
-            Nuestro servidor utiliza JSON para comunicar datos, la estructura
-            que requerimos para realizar una transacción es la siguiente:
-          </h4>
-          <img src="images/transaction-json.jpg">
-        </md-card-content>
-      </md-card>
     </div>
   </div>
 </md-content>

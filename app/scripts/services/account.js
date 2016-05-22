@@ -7,8 +7,13 @@
       login: login,
       getAll: getAll,
       getBalance: getBalance,
-      transfer: transfer
+      transfer: transfer,
+      getToken: getToken
     };
+
+    function getToken(accountId) {
+      return $http.get(basePath + 'api/Account/Token/' + accountId);
+    }
 
     function transfer(data) {
       return $http.post(basePath + 'api/Transaction/Transfer', data);
