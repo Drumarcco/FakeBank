@@ -61,6 +61,11 @@ angular
         controller: 'ApiCtrl',
         access_level: ACCESS_LEVELS.moralPerson
       })
+      .when('/history', {
+        templateUrl: 'views/history.html',
+        controller: 'HistoryCtrl',
+        access_level: ACCESS_LEVELS.physicalPerson
+      })
       .otherwise({
         redirectTo: '/'
       });

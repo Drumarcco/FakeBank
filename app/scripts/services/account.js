@@ -8,8 +8,13 @@
       getAll: getAll,
       getBalance: getBalance,
       transfer: transfer,
-      getToken: getToken
+      getToken: getToken,
+      getHistory: getHistory
     };
+
+    function getHistory(accountId) {
+      return $http.get(basePath + 'api/Transaction/GetAllByAccount/' + accountId);
+    }
 
     function getToken(accountId) {
       return $http.get(basePath + 'api/Account/Token/' + accountId);

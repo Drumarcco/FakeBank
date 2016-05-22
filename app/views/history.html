@@ -1,0 +1,38 @@
+<md-content flex="grow" class="bg-dashboard" layout="column" layout-align="start center" layout-padding>
+  <div layout="row" layout-align="center center" layout-margin>
+    <i class="fa fa-3x fa-file-text-o"></i>
+    <h1 class="text-center">Historial de Transacciones</h1>
+  </div>
+  <md-input-container>
+    <label>Tarjeta</label>
+    <md-select ng-model="AccountId" ng-change="getTransactions()">
+      <md-option ng-repeat="account in accounts" value="{{account.Id}}">
+        {{account.CardNumber | creditCard}}
+      </md-option>
+    </md-select>
+  </md-input-container>
+  <div layout layout-align="center" flex>
+    <div flex>
+      <h2 ng-if="transactions.length === 0">No hay transacciones.</h2>
+      <md-card ng-repeat="transaction in transactions">
+        <md-card-content>
+          <div layout layout-align="center center">
+            <div layout="column" layout-align="center center">
+              <h5 class="m-b-0">Monto:</h5>
+              <h4>{{transaction.Amount | currency}}</h4>
+            </div>
+          </div>
+          <hr>
+          <div layout layout-margin>
+            <h4 class="bold">Fecha:</h4>
+            <h4>{{transaction.Date | date : 'short' : 'PDT'}}</h4>
+          </div>
+          <div layout layout-margin layout-wrap>
+            <h4 class="bold">Cuenta Destino:</h4>
+            <h4>{{transaction.IdDestinationAccount}}</h4>
+          </div>
+        </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</md-content>
