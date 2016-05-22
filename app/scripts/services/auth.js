@@ -2,8 +2,7 @@
   'use strict';
   angular.module('fakeBankApp').factory('Auth', AuthService);
 
-  function AuthService($cookies, ACCESS_LEVELS) {
-    var _user = $cookies.get('user');
+  function AuthService(localStorageService, ACCESS_LEVELS) {
 
     return {
       isAuthorized: isAuthorized,
@@ -16,38 +15,41 @@
     };
 
     function logout() {
-      $cookies.remove('user');
-      _user = null;
+      localStorageService.cookie.remove('user');
     }
 
     function getToken() {
+      var _user = getUser();
       return _user ? _user.token : '';
     }
 
     function getId() {
+      var _user = getUser();
       return _user ? _user._id : null;
     }
 
     function getUser() {
-      return _user;
+      return localStorageService.cookie.get('user');
     }
 
     function isLoggedIn() {
+      var _user = getUser();
       return _user ? true : false;
     }
 
     function isAuthorized(lvl) {
+      var _user = getUser();
       if (lvl === 1) { return true; }
       if (!_user) { return false; }
       return _user.role >= lvl;
     }
 
     function setUser(user) {
+      console.log(user);
       if (!user.role || user.role < 0) {
         user.role = ACCESS_LEVELS.pub;
       }
-      _user = user;
-      $cookies.put('user', _user);
+      localStorageService.cookie.set('user', user);
     }
   }
 })();

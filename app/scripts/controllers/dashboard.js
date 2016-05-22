@@ -8,10 +8,6 @@
  * Controller of the fakeBankApp
  */
 angular.module('fakeBankApp')
-  .controller('DashboardCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('DashboardCtrl', function ($scope, Auth) {
+    $scope.username = Auth.getUser().username;
   });

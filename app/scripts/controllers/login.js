@@ -13,7 +13,6 @@ angular.module('fakeBankApp')
     $scope.user = {
       username: '',
       password: ''
-
     };
 
     function login(){

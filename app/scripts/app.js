@@ -14,7 +14,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngMaterial',
-    'ngCookies'
+    'ngCookies',
+    'LocalStorageModule'
   ])
   .config(function ($routeProvider, ACCESS_LEVELS) {
     $routeProvider
@@ -38,22 +39,27 @@ angular
       .when('/dashboard', {
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl',
-        access_level: ACCESS_LEVELS.user
+        access_level: ACCESS_LEVELS.physicalPerson
       })
       .when('/transaction', {
         templateUrl: 'views/transaction.html',
         controller: 'TransactionCtrl',
-        access_level: ACCESS_LEVELS.user
+        access_level: ACCESS_LEVELS.physicalPerson
       })
-      .when('/contract', {
+      .when('/contracts', {
+        templateUrl: 'views/contracts.html',
+        controller: 'ContractsCtrl',
+        access_level: ACCESS_LEVELS.employee
+      })
+      .when('/contracts/:id', {
         templateUrl: 'views/contract.html',
         controller: 'ContractCtrl',
-        access_level: ACCESS_LEVELS.user
+        access_level: ACCESS_LEVELS.employee
       })
       .when('/api', {
         templateUrl: 'views/api.html',
         controller: 'ApiCtrl',
-        access_level: ACCESS_LEVELS.user
+        access_level: ACCESS_LEVELS.moralPerson
       })
       .otherwise({
         redirectTo: '/'

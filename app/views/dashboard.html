@@ -1,7 +1,7 @@
 <md-content flex="grow" class="bg-dashboard">
-  <h1 class="text-center">Bienvenido, usuario.</h1>
+  <h1 class="text-center">Bienvenido, {{username}}.</h1>
   <hr>
-  <div layout-md="row" layout-lg="row" layout-gt-lg="row" layout-margin layout-align="space-around">
+  <div layout-md="row" layout-lg="row" layout-gt-lg="row" layout-margin layout-align="space-around" layout-wrap>
     <md-card flex-md="40" flex-lg="40" flex-gt-lg="40">
       <img src="images/transaction.jpg" class="md-card-image">
       <md-card-title layout-align="center">
@@ -18,7 +18,7 @@
       </md-card-actions>
     </md-card>
     <md-card flex-md="40" flex-lg="40" flex-gt-lg="40">
-      <img class="md-card-image">
+      <img src="images/history.jpg" class="md-card-image">
       <md-card-title layout="column" layout-align="center center">
         <span class="md-headline">Historial de Transacciones</span>
       </md-card-title>
@@ -43,6 +43,20 @@
       </md-card-content>
       <md-card-actions layout layout-align="end">
         <md-button class="md-primary" href="/#/api">
+          Comenzar
+        </md-button>
+      </md-card-actions>
+    </md-card>
+    <md-card flex-md="40" flex-lg="40" flex-gt-lg="40">
+      <img src="images/agreement.jpg" class="md-card-image">
+      <md-card-title layout="column" layout-align="center center">
+        <span class="md-headline">Realizar contratos</span>
+      </md-card-title>
+      <md-card-content>
+        <p>Llevar a cabo contratos de clientes pre-registrados.</p>
+      </md-card-content>
+      <md-card-actions layout layout-align="end">
+        <md-button class="md-primary" href="/#/contracts">
           Comenzar
         </md-button>
       </md-card-actions>

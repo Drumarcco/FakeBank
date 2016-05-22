@@ -8,7 +8,7 @@
  * Controller of the fakeBankApp
  */
 angular.module('fakeBankApp')
-  .controller('MainCtrl', function($scope, $anchorScroll, PreSignup) {
+  .controller('MainCtrl', function($scope, $anchorScroll, PreSignup, $filter) {
     $scope.registered = false;
     $scope.register = register;
     $scope.goToPlans = goToPlans;
@@ -26,7 +26,7 @@ angular.module('fakeBankApp')
     }];
 
     $scope.partner = {
-      IdAccountType: '',
+      IdAccountType: 'F6A21D99-1075-46D6-81A0-EBF7291D9B9B',
       UserName: '',
       FirstLastName: '',
       SecondLastName: '',
@@ -36,6 +36,8 @@ angular.module('fakeBankApp')
 
     function register() {
       if ($scope.preSignup.$valid) {
+        $scope.partner.UserName = $filter('removeSpaces')($scope.partner.UserName);
+        console.log($scope.partner);
         PreSignup.post($scope.partner).then(function() {
           $scope.registered = true;
         });
