@@ -8,6 +8,8 @@
  * Controller of the fakeBankApp
  */
 angular.module('fakeBankApp')
-  .controller('DashboardCtrl', function ($scope, Auth) {
+  .controller('DashboardCtrl', function ($scope, Auth, ACCESS_LEVELS) {
     $scope.username = Auth.getUser().username;
+    $scope.isAuthorized = Auth.isAuthorized;
+    $scope.ROLES = ACCESS_LEVELS;
   });

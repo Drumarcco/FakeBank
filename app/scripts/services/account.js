@@ -30,6 +30,7 @@
           switch (role) {
             case '45c79d52-6ffa-4a06-a110-20044de62043': return ACCESS_LEVELS.employee;
             case '5b39f271-737f-435a-92ae-13e1d6fbd687': return ACCESS_LEVELS.moralPerson;
+            case '291a0b8b-1d9a-4def-97a6-07a4f2a800a2': return ACCESS_LEVELS.physicalPerson;
             default: return ACCESS_LEVELS.pub;
           }
         }

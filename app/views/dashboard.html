@@ -2,7 +2,7 @@
   <h1 class="text-center">Bienvenido, {{username}}.</h1>
   <hr>
   <div layout-md="row" layout-lg="row" layout-gt-lg="row" layout-margin layout-align="space-around" layout-wrap>
-    <md-card flex-md="40" flex-lg="40" flex-gt-lg="40">
+    <md-card ng-if="isAuthorized(ROLES.physicalPerson)" flex-md="40" flex-lg="40" flex-gt-lg="40">
       <img src="images/transaction.jpg" class="md-card-image">
       <md-card-title layout-align="center">
         <span class="md-headline">Realizar una Transacción</span>
@@ -17,7 +17,7 @@
         </md-button>
       </md-card-actions>
     </md-card>
-    <md-card flex-md="40" flex-lg="40" flex-gt-lg="40">
+    <md-card ng-if="isAuthorized(ROLES.physicalPerson)" flex-md="40" flex-lg="40" flex-gt-lg="40">
       <img src="images/history.jpg" class="md-card-image">
       <md-card-title layout="column" layout-align="center center">
         <span class="md-headline">Historial de Transacciones</span>
@@ -31,7 +31,7 @@
         </md-button>
       </md-card-actions>
     </md-card>
-    <md-card flex-md="40" flex-lg='40' flex-gt-lg="40">
+    <md-card ng-if="isAuthorized(ROLES.moralPerson)" flex-md="40" flex-lg='40' flex-gt-lg="40">
       <img src="images/code.jpg" class="md-card-image">
       <md-card-title layout="column" layout-align="center center">
         <span class="md-headline">Implementa nuestra API</span>
@@ -47,7 +47,7 @@
         </md-button>
       </md-card-actions>
     </md-card>
-    <md-card flex-md="40" flex-lg="40" flex-gt-lg="40">
+    <md-card ng-if="isAuthorized(ROLES.employee)" flex-md="40" flex-lg="40" flex-gt-lg="40">
       <img src="images/agreement.jpg" class="md-card-image">
       <md-card-title layout="column" layout-align="center center">
         <span class="md-headline">Realizar contratos</span>

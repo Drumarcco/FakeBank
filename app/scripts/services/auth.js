@@ -45,7 +45,6 @@
     }
 
     function setUser(user) {
-      console.log(user);
       if (!user.role || user.role < 0) {
         user.role = ACCESS_LEVELS.pub;
       }
