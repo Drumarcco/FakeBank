@@ -4,8 +4,26 @@
 
   function Account($http, Auth, basePath, $location, ACCESS_LEVELS) {
     return {
-      login: login
+      login: login,
+      getAll: getAll,
+      getBalance: getBalance,
+      transfer: transfer
     };
+
+    function transfer(data) {
+      return $http.post(basePath + 'api/Transaction/Transfer', data);
+    }
+
+    function getBalance(cardNumber) {
+      return $http.get(basePath + 'api/Account/Balance/' + cardNumber)
+        .then(function(response) {
+          return response.data.Balance;
+        });
+    }
+
+    function getAll() {
+      return $http.get(basePath + 'api/Account/GetAll');
+    }
 
     function login(user) {
       var data = 'grant_type=password&username=' + user.username +

@@ -8,17 +8,31 @@
  * Controller of the fakeBankApp
  */
 angular.module('fakeBankApp')
-  .controller('TransactionCtrl', function ($scope, $mdDialog) {
-    $scope.showModal = showModal;
+  .controller('TransactionCtrl', function ($scope, Account, $mdToast, $location) {
+    $scope.transaction = {
+      CardNumber: '',
+      IdAccount: '',
+      Amount: 0
+    };
 
-    function showModal() {
-      var confirm = $mdDialog.confirm({
-        title: 'Transacción exitosa',
-        textContent: 'Descargue su comprobante con el siguiente botón.',
-        ok: 'Guardar Archivo',
-        cancel: 'Cancelar'
+    $scope.accounts = [];
+
+    $scope.transfer = function() {
+      Account.transfer($scope.transaction).then(function() {
+        $mdToast.showSimple('Transferncia exitosa.');
+        $location.path('/');
       });
+    };
 
-      $mdDialog.show(confirm);
-    }
+    $scope.updateBalance = function() {
+      Account.getBalance($scope.transaction.IdAccount).then(
+        function(balance) {
+          $scope.balance = balance;
+        }
+      );
+    };
+
+    Account.getAll().then(function(response) {
+      $scope.accounts = response.data;
+    });
   });

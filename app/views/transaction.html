@@ -3,27 +3,35 @@
   <hr>
   <div layout layout-align="center">
     <md-card flex="80" layout-padding>
-      <md-card-content layout="column">
-        <div layout layout-align="end">
-          <div layout="column" layout-align="center end">
-            <h3 class="m-b-0">Saldo Actual:</h3>
-            <h2>$3500.00</h2>
+      <form ng-submit="transfer()" layout="column" novalidate>
+        <md-card-content layout="column">
+          <div layout layout-align="end">
+            <div ng-if="balance" layout="column" layout-align="center end">
+              <h3 class="m-b-0">Saldo Actual:</h3>
+              <h2>{{balance | currency}}</h2>
+            </div>
           </div>
-        </div>
-        <form layout="column">
           <md-input-container>
-            <label>Cuenta destino</label>
-            <input>
+            <label>Tarjeta</label>
+            <md-select ng-model="transaction.IdAccount" ng-change="updateBalance()" required>
+              <md-option ng-repeat="account in accounts" value="{{account.Id}}">
+                {{account.CardNumber | creditCard}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container>
+            <label>Tarjeta destino</label>
+            <input ng-model="transaction.CardNumber" required>
           </md-input-container>
           <md-input-container>
             <label>Monto</label>
-            <input>
+            <input type="number" ng-model="transaction.Amount" required>
           </md-input-container>
-        </form>
-      </md-card-content>
-      <md-card-ations layout layout-align="end">
-        <md-button class="md-primary md-raised" ng-click="showModal()">Aceptar</md-button>
-      </md-card-ations>
+        </md-card-content>
+        <md-card-ations layout layout-align="end">
+          <md-button type="submit" class="md-primary md-raised">Aceptar</md-button>
+        </md-card-ations>
+      </form>
     </md-card>
   </div>
 </md-content>
