@@ -66,6 +66,11 @@ angular
         controller: 'HistoryCtrl',
         access_level: ACCESS_LEVELS.physicalPerson
       })
+      .when('/profile', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl',
+        access_level: ACCESS_LEVELS.physicalPerson
+      })
       .otherwise({
         redirectTo: '/'
       });

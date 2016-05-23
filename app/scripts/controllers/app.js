@@ -9,7 +9,9 @@
 (function() {
   'use strict';
   angular.module('fakeBankApp')
-    .controller('AppCtrl', function($scope, $mdSidenav, Auth, $location) {
+    .controller('AppCtrl', function($rootScope, $scope, $mdSidenav, Auth, $location) {
+      $rootScope.username = Auth.getUser().username;
+
       $scope.toggleSidenav = function() {
         $mdSidenav('sidenav').toggle();
       };
