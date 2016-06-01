@@ -1,0 +1,71 @@
+<md-content flex="grow" class="bg-dashboard" layout="column" layout-align="start center" layout-padding>
+  <div layout="row" layout-align="center center" layout-margin>
+    <i class="fa fa-3x fa-file-text-o"></i>
+    <h1 class="text-center">Contrato</h1>
+  </div>
+  <div layout layout-align="center" flex>
+    <div flex>
+      <md-card>
+        <md-toolbar>
+          <md-toolbar-tools>
+            <h3 class="text-center">Cliente</h3>
+          </md-toolbar-tools>
+        </md-toolbar>
+        <md-card-content>
+          <div layout layout-align="center center">
+            <div layout="column" layout-align="center center">
+              <h5 class="m-b-0">Tipo de Cliente:</h5>
+              <h4>{{ preSignup.AccountType ? 'Persona Moral' : 'Persona Física' }}</h4>
+            </div>
+          </div>
+          <hr>
+          <div layout layout-margin>
+            <h4 class="bold">Nombre:</h4>
+            <h4>{{preSignup.UserName}} {{preSignup.FirstSurname}} {{preSignup.SecondSurname}}</h4>
+          </div>
+          <div layout layout-margin layout-wrap>
+            <h4 class="bold">Correo Electrónico:</h4>
+            <h4>{{preSignup.Email}}</h4>
+          </div>
+        </md-card-content>
+      </md-card>
+      <hr>
+      <h3 class="text-center">Continuar Registro:</h3>
+      <md-card>
+        <form name="contractForm" ng-submit="signUp()" novalidate>
+          <md-card-content layout="column">
+            <md-input-container>
+              <label>RFC</label>
+              <input type="text" ng-model="contract.Rfc" required ng-minlength="12" ng-maxlength="13">
+            </md-input-container>
+            <md-input-container>
+              <label>Género</label>
+              <md-select ng-model="contract.Gender" required>
+                <md-option value=false>
+                  Femenino
+                </md-option>
+                <md-option value=true>
+                  Masculino
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <md-datepicker layout-margin ng-model="contract.BirthDate" ng-required md-placeholder='Fecha de Nac.'></md-datepicker>
+            <md-input-container>
+              <label>Contraseña</label>
+              <input type="password" ng-model="contract.Password" required
+              ng-min-length="6">
+            </md-input-container>
+            <md-input-container>
+              <label>Confirmar Contraseña</label>
+              <input type="password" ng-model="contract.ConfirmPassword"
+              required ng-min-length="6" confirm-password="contract.Password">
+            </md-input-container>
+          </md-card-content>
+          <md-card-actions layout layout-align="end">
+            <md-button type="submit" class="md-primary md-raised">Registrar</md-button>
+          </md-card-actions>
+        </form>
+      </md-card>
+    </div>
+  </div>
+</md-content>

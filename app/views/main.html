@@ -1,0 +1,86 @@
+<md-content flex="grow">
+  <section id="header" class="bg-bank" layout="column">
+    <div class="jumbotron bg-shadow fill-width" flex layout="column" layout-align="center center" layout-padding>
+      <h1 class="text-center md-display-2">Fake Bank</h1>
+      <hr>
+      <h2 class="text-center" layout-margin>Somos un banco ficticio de confianza,
+        dispuestos a ofrecerte la mejor opción.</h2>
+      <a ng-click="goToPlans()">
+        <i class="fa fa-2x fa-chevron-down"></i>
+      </a>
+    </div>
+  </section>
+  <section id="plans" layout="column">
+    <div flex layout="column" layout-align="center center">
+      <h1 class="text-center">
+        Tenemos dos opciones para ti
+      </h1>
+      <div layout layout-xs="column" layout-sm="column" layout-align="center" layout-align-xs="center center" layout-align-sm="center center">
+        <md-card flex="40" flex-xs="50" flex-sm="50" ng-repeat="plan in plans">
+          <img ng-src="{{plan.imgSrc}}" class="md-card-image">
+          <md-card-title layout-align="center">
+            <span class="md-headline">{{plan.title}}</span>
+          </md-card-title>
+          <md-card-content>
+            <p>{{plan.description}}</p>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end">
+            <md-button class="md-primary" ng-click="selectPlan(plan.id)">Elegir</md-button>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </div>
+  </section>
+  <section id="signup" class="bg-signup" layout="column">
+    <div class="bg-shadow-teal" flex layout="column" layout-align="center center">
+      <div ng-hide="registered">
+        <h1 class="text-center">Seamos socios</h1>
+        <h3 class="text-center">Pre-registrate con nosotros para contratar nuestros servicios.</h3>
+        <div layout layout-align="center" class="fill-width">
+          <md-card flex="70" layout-padding layout-align="center">
+            <md-card-content flex>
+              <md-content>
+                <form name="preSignup" layout="column" novalidate>
+                  <md-input-container>
+                    <label>Tipo de Socio</label>
+                    <md-select ng-model="partner.IdAccountType" required>
+                      <md-option ng-repeat="plan in plans" value={{plan.id}}>
+                        {{plan.title}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                  <md-input-container>
+                    <label>Nombre de Usuario</label>
+                    <input ng-model="partner.UserName" required>
+                  </md-input-container>
+                  <md-input-container>
+                    <label>Apellido Paterno</label>
+                    <input ng-model="partner.FirstLastName" required>
+                  </md-input-container>
+                  <md-input-container>
+                    <label>Apellido Materno</label>
+                    <input ng-model="partner.SecondLastName" required>
+                  </md-input-container>
+                  <md-input-container>
+                    <label>E-mail</label>
+                    <input type="email" ng-model="partner.Email" required>
+                  </md-input-container>
+                  <md-input-container>
+                    <label>Teléfono</label>
+                    <input ng-model="partner.PhoneNumber" required>
+                  </md-input-container>
+                </form>
+              </md-content>
+            </md-card-content>
+            <md-card-actions layout layout-align="end">
+              <md-button class="md-primary md-raised" ng-click="register()">Registrar</md-button>
+            </md-card-actions>
+          </md-card>
+        </div>
+      </div>
+      <div ng-if="registered">
+        <h1>¡Gracias, te contactaremos pronto!</h1>
+      </div>
+    </div>
+  </section>
+</md-content>

@@ -1,0 +1,142 @@
+/*
+====== CONTENTS =======
+ -- GENERAL -----------
+ -- BOOTSTRAP ---------
+ -- SECTIONS ----------
+ -- BACKGROUND --------
+ -- LAYOUT ------------
+ ======================
+ */
+
+/* GENERAL*/
+* {
+  font-family: Roboto;
+}
+
+h1, h2 {
+  font-weight: 300;
+}
+
+h3, h4 {
+  font-weight: 200;
+}
+
+body {
+  padding: 0;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: lightgray;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+/* BOOTSTRAP */
+.jumbotron {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.jumbotron > hr {
+  width: 20%;
+  border-top-width: thick;
+  border-top-color: #009688;
+}
+
+md-icon.fa {
+  font-size: 24px;
+}
+
+.bold {
+  font-weight: normal;
+}
+
+.step {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #009688;
+}
+
+.step > h2 {
+  color: white;
+  margin: 0;
+  position: relative;
+  top: 10px;
+  font-size: 30px;
+  text-align: center;
+}
+
+/* SECTIONS */
+section {
+  min-height: 400px;
+}
+
+section > div {
+  padding: 30px;
+}
+
+#header {
+  color: white;
+  height: calc(100vh - 58px);
+}
+
+#header h1 {
+  font-size: 72px;
+}
+
+#login {
+  color: white;
+  height: calc(100vh - 58px);
+}
+
+#login h1 {
+  font-size: 48px;
+}
+
+#plan {
+  background-color: #f2f2f2;
+}
+
+#signup {
+  background-color: #4F5358;
+  color: white;
+}
+
+/* BACKGROUND */
+.bg-bank {
+  background-image: url("../images/bank.jpg");
+  background-size: cover;
+}
+
+.bg-shadow {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.bg-shadow-teal {
+  background: rgba(0, 100, 90, 0.9)
+}
+
+.bg-signup {
+  background-image: url("../images/agreement.jpg");
+  background-size: cover;
+}
+
+.bg-dashboard {
+  background-color: #f4f4f4;
+}
+
+/* LAYOUT */
+.fill-width {
+  width: 100%;
+}
+
+.m-b-0 {
+  margin-bottom: 0;
+}

@@ -1,0 +1,65 @@
+<md-content flex="grow" class="bg-dashboard">
+  <h1 class="text-center">Bienvenido, {{username}}.</h1>
+  <hr>
+  <div layout-md="row" layout-lg="row" layout-gt-lg="row" layout-margin layout-align="space-around" layout-wrap>
+    <md-card ng-if="isAuthorized(ROLES.physicalPerson)" flex-md="40" flex-lg="40" flex-gt-lg="40">
+      <img src="images/transaction.jpg" class="md-card-image">
+      <md-card-title layout-align="center">
+        <span class="md-headline">Realizar una Transacción</span>
+      </md-card-title>
+      <md-card-content>
+        <p>Enviar dinero nunca ha sido tan fácil, aprovecha nuestro portal
+        en línea.</p>
+      </md-card-content>
+      <md-card-actions layout layout-align="end">
+        <md-button href="/#/transaction" class="md-primary">
+          Comenzar
+        </md-button>
+      </md-card-actions>
+    </md-card>
+    <md-card ng-if="isAuthorized(ROLES.physicalPerson)" flex-md="40" flex-lg="40" flex-gt-lg="40">
+      <img src="images/history.jpg" class="md-card-image">
+      <md-card-title layout="column" layout-align="center center">
+        <span class="md-headline">Historial de Transacciones</span>
+      </md-card-title>
+      <md-card-content>
+        <p>Revisa el historial de transacciones realizadas en tu cuenta.</p>
+      </md-card-content>
+      <md-card-actions layout layout-align="end">
+        <md-button class="md-primary" href="/#/history">
+          Historial
+        </md-button>
+      </md-card-actions>
+    </md-card>
+    <md-card ng-if="isAuthorized(ROLES.moralPerson)" flex-md="40" flex-lg='40' flex-gt-lg="40">
+      <img src="images/code.jpg" class="md-card-image">
+      <md-card-title layout="column" layout-align="center center">
+        <span class="md-headline">Implementa nuestra API</span>
+        <span class="md-subhead">¿Tienes un sitio de compras en línea?</span>
+      </md-card-title>
+      <md-card-content>
+        <p>Implementa nuestro sistema de transacciones en tu sitio y aumenta
+        tus ingresos.</p>
+      </md-card-content>
+      <md-card-actions layout layout-align="end">
+        <md-button class="md-primary" href="/#/api">
+          Comenzar
+        </md-button>
+      </md-card-actions>
+    </md-card>
+    <md-card ng-if="isAuthorized(ROLES.employee)" flex-md="40" flex-lg="40" flex-gt-lg="40">
+      <img src="images/agreement.jpg" class="md-card-image">
+      <md-card-title layout="column" layout-align="center center">
+        <span class="md-headline">Realizar contratos</span>
+      </md-card-title>
+      <md-card-content>
+        <p>Llevar a cabo contratos de clientes pre-registrados.</p>
+      </md-card-content>
+      <md-card-actions layout layout-align="end">
+        <md-button class="md-primary" href="/#/contracts">
+          Comenzar
+        </md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
+</md-content>
