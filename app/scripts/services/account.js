@@ -2,7 +2,7 @@
   'use strict';
   angular.module('fakeBankApp').factory('Account', Account);
 
-  function Account($http, Auth, basePath, $location, ACCESS_LEVELS) {
+  function Account($http, Auth, basePath, $location, ACCESS_LEVELS, $rootScope) {
     return {
       login: login,
       getAll: getAll,
@@ -56,6 +56,8 @@
           token: 'Bearer ' + data.access_token,
           role: role
         });
+
+        $rootScope.username = user.username;
 
         $location.path('/dashboard');
 

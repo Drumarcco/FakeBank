@@ -18,6 +18,10 @@
         <md-card-content>
           <div layout layout-align="center center">
             <div layout="column" layout-align="center center">
+              <h5 class="m-b-0">
+                Numero de Transaccion:
+              </h5>
+              <h4>{{ transaction.TransactionNumber }}</h4>
               <h5 class="m-b-0">Monto:</h5>
               <h4>{{transaction.Amount | currency}}</h4>
             </div>
@@ -28,8 +32,8 @@
             <h4>{{transaction.Date | date : 'short' : 'PDT'}}</h4>
           </div>
           <div layout layout-margin layout-wrap>
-            <h4 class="bold">Cuenta Destino:</h4>
-            <h4>{{transaction.IdDestinationAccount}}</h4>
+            <h4 class="bold">Tarjeta Destino:</h4>
+            <h4>{{ transaction.DestinationCard | creditCard }}</h4>
           </div>
         </md-card-content>
       </md-card>

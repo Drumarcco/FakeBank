@@ -10,7 +10,9 @@
   'use strict';
   angular.module('fakeBankApp')
     .controller('AppCtrl', function($rootScope, $scope, $mdSidenav, Auth, $location) {
-      $rootScope.username = Auth.getUser().username;
+      if (Auth.isLoggedIn()) {
+        $rootScope.username = Auth.getUser().username;
+      }
 
       $scope.toggleSidenav = function() {
         $mdSidenav('sidenav').toggle();
