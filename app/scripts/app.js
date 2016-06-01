@@ -152,4 +152,4 @@ angular
     $mdThemingProvider.theme('docs-teal', 'default')
       .primaryPalette('light-green');
   })
-  .value('basePath', 'http://localhost:51016/');
+  .value('basePath', 'http://drumarcco-001-site1.itempurl.com/');
