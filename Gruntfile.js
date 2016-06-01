@@ -479,4 +479,6 @@ module.exports = function (grunt) {
     'newer:jscs',
     'build'
   ]);
+
+  grunt.registerTask('heroku', ['build']);
 };
